@@ -1,0 +1,123 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Cadastro Imovel{% endblock%}
+{% block main %}
+<div class="card bg-light formulario">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Informações do imovel</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class='form-row'>
+                <div class="form-group col-md-4">
+                    <label for="id_valor_aluguel">Valor do aluguel</label>
+                    {{form_imovel.valor_aluguel}}
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_iptu">Valor do IPTU</label>
+                    {{form_imovel.iptu}}
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_condominio">Valor do Condominio</label>
+                    {{form_imovel.condominio}}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="id_quartos">Numero de Quartos</label>
+                    {{form_imovel.quartos}}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="id_suites">Numero de Suites</label>
+                    {{form_imovel.suites}}
+                </div>
+            </div>
+            <div class='form-row'>
+                <div class="form-group col-lg">
+                    <label for="id_descricao">Descrição</label>
+                    {{form_imovel.descricao}}
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="custom-file">
+                    {{imagens_form.imagem1}}
+                    <label class="custom-file-label" for="{{imagens_form.id_for_label}}">Enviar até 4 imagens</label>
+                </div>
+                <!-- TODO: Fazer o endereço aparecer na input  -->
+            </div>
+            <div class="input-group" id='imagem2' hidden>
+                <div class="custom-file">
+                    {{imagens_form.imagem2}}
+                    <label class="custom-file-label" for="{{imagens_form.id_for_label}}">Falta 3</label>
+                </div>
+                <!-- TODO: Fazer o endereço aparecer na input  -->
+            </div>
+            <div class="input-group" id='imagem3' hidden>
+                <div class="custom-file">
+                    {{imagens_form.imagem3}}
+                    <label class="custom-file-label" for="{{imagens_form.id_for_label}}">Falta 2</label>
+                </div>
+                <!-- TODO: Fazer o endereço aparecer na input  -->
+                
+            </div>
+            <div class="input-group" id='imagem4' hidden>
+                <div class="custom-file">
+                    {{imagens_form.imagem4}}
+                    <label class="custom-file-label" for="{{imagens_form.id_for_label}}">Falta 1</label>
+                </div>
+                <!-- TODO: Fazer o endereço aparecer na input  -->
+            </div>
+            <div class="float-right p-3">
+            <button type="button" class="btn btn-outline-success btn-sm">+</button>
+            </div>
+
+        </div>
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Endereço do imovel</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                {{endereco_form.cep.label_tag }}
+                {{endereco_form.cep}}
+            </div>
+            <div class="form-group">
+                {{endereco_form.rua.label_tag }}
+                {{endereco_form.rua}}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{endereco_form.bairro.label_tag }}
+                    {{endereco_form.bairro}}
+                </div>
+                <div class="form-group col-md-4">
+                    {{endereco_form.cidade.label_tag }}
+                    {{endereco_form.cidade}}
+                </div>
+                <div class="form-group col-md-2">
+                    {{endereco_form.uf.label_tag }}
+                    {{endereco_form.uf}}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="float-right">
+                <button type="submit" class="btn btn btn-success btn-lg">Salvar</button>
+                <a href="{%url 'lista_imovel' %}"><button type="button" class="btn btn-outline-primary btn-lg">Voltar</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock%}
+
+{%block script%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+<script type="text/javascript" src="{% static 'cadastro_imoveis/js/script.js' %}"></script>
+{%endblock%}

@@ -1,0 +1,14 @@
+.logo {
+    max-width:150px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+
+.formulario{
+    max-width: 75%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto 
+}
+
